@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 // CORS SETUP
-app.use(cors()); // Allow all origins
-app.use(express.json()); // Parse JSON body
+// app.use(cors()); // Allow all origins
+// app.use(express.json()); // Parse JSON body
 
 // const allowedOrigins = [
 //   "https://recipe-appfrontend.vercel.app",
@@ -30,13 +30,14 @@ app.use(express.json()); // Parse JSON body
 //     allowedHeaders: ["Content-Type"],
 //   })
 // );
-// app.use(
-//   cors({
-//     origin: "https://recipe-book-front-end.vercel.app", // Vite frontend
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type"],
-//   })
-// );
+
+app.use(
+  cors({
+    origin: "https://recipe-appfrontend.vercel.app", // Vite frontend
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 // CONNECT TO MONGODB
 mongoose
