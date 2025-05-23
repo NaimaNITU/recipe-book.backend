@@ -38,6 +38,15 @@ app.post("/recipes", async (req, res) => {
   }
 });
 
+// Get all recipes
+app.get("/recipes", async (req, res) => {
+  try {
+    const recipes = await Recipe.find();
+    res.json(recipes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 // DEFINE MODEL
 const RecipeSchema = new mongoose.Schema({}, { strict: false });
 const Recipe = mongoose.model("Recipe", RecipeSchema, "recipes");
