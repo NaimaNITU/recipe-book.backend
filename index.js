@@ -15,7 +15,8 @@ app.use(
 );
 
 // CONNECT TO MONGODB
-const MONGODB_URI = `${process.env.MONGODB_URI}`;
+const MONGODB_URI =
+  "mongodb+srv://naimauddin23:1eHr4LwMKz9ne77t@cluster0.cow9yu9.mongodb.net/recipe-book-app?retryWrites=true&w=majority";
 
 // CONNECT TO MONGODB
 // const MONGODB_URI =
