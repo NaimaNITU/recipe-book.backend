@@ -123,6 +123,21 @@ app.delete("/recipes/:id", async (req, res) => {
   }
 });
 
+// PATCH - Like a recipe
+app.patch("/recipes/:id/like", async (req, res) => {
+  try {
+    const updated = await Recipe.findByIdAndUpdate(
+      req.params.id,
+      { $inc: { likeCount: 1 } }, // Increment likeCount atomically
+      { new: true } // Return the updated document
+    );
+    if (!updated) return res.status(404).json({ error: "Recipe not found" });
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // START SERVER
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
