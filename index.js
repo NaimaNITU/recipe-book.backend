@@ -112,6 +112,18 @@ app.put("/recipes/:id", async (req, res) => {
   }
 });
 
+// GET My Items by userId
+// backend route
+app.get("/recipes/my-items/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const items = await Recipe.find({ userId }); // ✅ filters correctly
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // DELETE
 app.delete("/recipes/:id", async (req, res) => {
   try {
